@@ -47,7 +47,8 @@ public class MyController {
 		if(memberId.equals(id) && memberPw.equals(pw)) {
 			session.setAttribute("id",id);
 			session.setAttribute("name",member.get(0).getName());
-			return "main";
+			session.setAttribute("mno", member.get(0).getMno());
+	        return "main";
 		}else {
 			System.out.println("로그인 실패");
 			return "login";
@@ -61,13 +62,13 @@ public class MyController {
 	}
 	//write
 	@RequestMapping("/write")
-	public String write(@RequestParam("title") String title, @RequestParam("content") String content) {
+	public String write(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
 		
-		int mno = 1;
+		int mno = (int) session.getAttribute("mno");
 		Date regidate = new Date();
 		noticeDao.writeDao(title, content, regidate, mno);
 		
-		return "main";
+		return "redirect:detail";
 	}
 	//detail
 	@RequestMapping("/detail")
