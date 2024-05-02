@@ -16,13 +16,13 @@
         <th>이메일</th>
         <th>전화번호</th>
     </tr>
-    <tr>
-        <td th:text="${dto.mno}"></td>
-        <td th:text="${dto.id}"></td>
-        <td th:text="${dto.pw}"></td>
-        <td th:text="${dto.name}"></td>
-        <td th:text="${dto.email}"></td>
-        <td th:text="${dto.tel}"></td>
+    <tr th:each>
+        <td>[[${dto.mno}]]</td>
+        <td>[[${dto.id}]]</td>
+        <td>[[${dto.pw}]]</td>
+        <td>[[${dto.name}]]</td>
+        <td>[[${dto.email}]]</td>
+        <td>[[${dto.tel}]]</td>
     </tr>
 </table>
 </body>
