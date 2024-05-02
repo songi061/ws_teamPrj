@@ -5,6 +5,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>Main Page</h1>
+<hr>
+<table>
+	<tr>
+        <th>회원번호</th>
+        <th>ID</th>
+        <th>비밀번호</th>
+        <th>이름</th>
+        <th>이메일</th>
+        <th>전화번호</th>
+    </tr>
+    <tr>
+        <td th:text="${dto.mno}"></td>
+        <td th:text="${dto.id}"></td>
+        <td th:text="${dto.pw}"></td>
+        <td th:text="${dto.name}"></td>
+        <td th:text="${dto.email}"></td>
+        <td th:text="${dto.tel}"></td>
+    </tr>
+</table>
 </body>
 </html>
