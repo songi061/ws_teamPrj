@@ -8,6 +8,9 @@
 	    INSERT INTO notice_DBL VALUES (null, #{param1}, #{param2}, #{param3}, #{param4})
 	</insert>
 	<select id="getDetailList">
-	    SELECT * FROM notice_DBL WHERE mno= #{mno}
+	    SELECT * FROM notice_DBL WHERE num= #{num}
+	</select>
+	<select id="getList">
+		SELECT * FROM notice_dbl 
 	</select>
 </mapper>

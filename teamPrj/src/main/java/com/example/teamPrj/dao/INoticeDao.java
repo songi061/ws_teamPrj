@@ -15,6 +15,7 @@ public interface INoticeDao {
 	public int writeDao(@Param("title")String title,@Param("content")String content,@Param("regidate")Date regidate,
 	@Param("mno")int mno);
 	
-	public MemberDto getDetailList(@Param("mno")int mno);
+	public NoticeDto getDetailList(int num);
 	
+	public List<NoticeDto> getList();
 }

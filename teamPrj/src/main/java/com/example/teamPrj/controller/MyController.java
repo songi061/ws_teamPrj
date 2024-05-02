@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.teamPrj.dao.IMemberDao;
 import com.example.teamPrj.dao.INoticeDao;
 import com.example.teamPrj.dto.MemberDto;
+import com.example.teamPrj.dto.NoticeDto;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +25,7 @@ public class MyController {
 	
 	@Autowired
 	private IMemberDao memberDao;
+	
 	@Autowired
 	private INoticeDao noticeDao;
 	
@@ -45,6 +47,7 @@ public class MyController {
 		String memberId = member.get(0).getId();
 		String memberPw = member.get(0).getPw();
 		if(memberId.equals(id) && memberPw.equals(pw)) {
+			session.setAttribute("member",member);
 			session.setAttribute("id",id);
 			session.setAttribute("name",member.get(0).getName());
 			session.setAttribute("mno", member.get(0).getMno());
@@ -55,11 +58,36 @@ public class MyController {
 		}
 		
 	}
-	//writeForm
+
+	
+	
+	@RequestMapping("/myPage")
+	public void myPage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		List<MemberDto> member = (List<MemberDto>)session.getAttribute("member");
+		//멤버 정보 불러오기
+		model.addAttribute("member",member);
+		
+		//작성 글 불러오기
+		List<NoticeDto> myList = memberDao.getMyList(member.get(0).getMno());
+		model.addAttribute("myList",myList);
+	}
+	
+	
+	@RequestMapping("/noticeList")
+	public void list(Model model) {
+		List<NoticeDto> list = noticeDao.getList();
+		model.addAttribute("list",list);
+	}
+	
+	
+	
+
 	@RequestMapping("/writeForm")
 	public void writeForm() {
 		
 	}
+
 	//write
 	@RequestMapping("/write")
 	public String write(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
@@ -68,13 +96,15 @@ public class MyController {
 		Date regidate = new Date();
 		noticeDao.writeDao(title, content, regidate, mno);
 		
-		return "redirect:detail";
+		return "redirect:noticeList";
 	}
 	//detail
 	@RequestMapping("/detail")
-	public String getDetailList(@RequestParam("mno") int mno, Model model) {
-		model.addAttribute("dto", noticeDao.getDetailList(mno));
+	public String getDetailList(@RequestParam("num") String num, Model model) {
+		int num_=Integer.parseInt(num);
+		model.addAttribute("dto", noticeDao.getDetailList(num_));
 		return "detail";
 	}
+
 	
 }
