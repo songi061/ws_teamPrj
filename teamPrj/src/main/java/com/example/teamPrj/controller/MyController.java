@@ -1,5 +1,6 @@
 package com.example.teamPrj.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +50,15 @@ public class MyController {
 			session.setAttribute("member",member);
 			session.setAttribute("id",id);
 			session.setAttribute("name",member.get(0).getName());
-			return "main";
+			session.setAttribute("mno", member.get(0).getMno());
+	        return "main";
 		}else {
 			System.out.println("로그인 실패");
 			return "login";
 		}
 		
 	}
+
 	
 	
 	@RequestMapping("/myPage")
@@ -79,9 +82,29 @@ public class MyController {
 	
 	
 	
+
 	@RequestMapping("/writeForm")
 	public void writeForm() {
 		
 	}
+
+	//write
+	@RequestMapping("/write")
+	public String write(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
+		
+		int mno = (int) session.getAttribute("mno");
+		Date regidate = new Date();
+		noticeDao.writeDao(title, content, regidate, mno);
+		
+		return "redirect:noticeList";
+	}
+	//detail
+	@RequestMapping("/detail")
+	public String getDetailList(@RequestParam("num") String num, Model model) {
+		int num_=Integer.parseInt(num);
+		model.addAttribute("dto", noticeDao.getDetailList(num_));
+		return "detail";
+	}
+
 	
 }
