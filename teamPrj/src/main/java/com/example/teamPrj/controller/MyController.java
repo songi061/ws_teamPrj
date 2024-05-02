@@ -1,5 +1,7 @@
 package com.example.teamPrj.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.teamPrj.dao.IMemberDao;
+import com.example.teamPrj.dao.INoticeDao;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -18,6 +21,9 @@ public class MyController {
 	
 	@Autowired
 	private IMemberDao memberDao;
+	
+	@Autowired
+	private INoticeDao noticeDao;
 	
 	@RequestMapping("/")
 	public @ResponseBody String root() {
@@ -31,6 +37,13 @@ public class MyController {
 		
 	}
 	
+	@RequestMapping("/write")
+	public String write(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("regidate") Date regidate ) {
+		String id2 = "aaa";
+		noticeDao.write(title, content, regidate, id2);
+		
+		return "redirect:detail";
+	}
 	
 	
 }
