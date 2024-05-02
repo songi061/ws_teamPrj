@@ -5,6 +5,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>게시글 상세 페이지</h1>
+	<hr>
+	<table border="1" width="500" cellpadding="0" cellspacing="0" style="text-align: center;">
+		<thead>
+			<tr>
+				<th>순번</th><th>제목</th><th>내용</th><th>작성일</th><th>작성자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto, status : ${list}">
+				<td>[[${status.count }]]</td>
+				<td>[[${dto.title}]]</td>
+				<td>[[${dto.content}]]</td>
+				<td>[[${dto.regdate}]]</td>
+				<td>[[${dto.name}]]</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
