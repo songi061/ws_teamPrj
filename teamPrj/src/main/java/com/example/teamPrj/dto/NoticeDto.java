@@ -14,7 +14,7 @@ public class NoticeDto {
 	private int num;
 	private String title;
 	private String content;
-	private LocalDate regdate;
+	private LocalDate regidate;
 	private int mno;
 	
 }

@@ -7,4 +7,8 @@
 	<insert id="writeDao">
 	    INSERT INTO notice_DBL VALUES (null, #{param1}, #{param2}, #{param3}, #{param4})
 	</insert>
+	
+	<select id="getList">
+		select * from notice_dbl 
+	</select>
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.teamPrj.dao.IMemberDao;
+import com.example.teamPrj.dao.INoticeDao;
 import com.example.teamPrj.dto.MemberDto;
 import com.example.teamPrj.dto.NoticeDto;
 
@@ -23,6 +24,9 @@ public class MyController {
 	
 	@Autowired
 	private IMemberDao memberDao;
+	
+	@Autowired
+	private INoticeDao noticeDao;
 	
 	@RequestMapping("/")
 	public @ResponseBody String root() {
@@ -67,6 +71,17 @@ public class MyController {
 	}
 	
 	
+	@RequestMapping("/noticeList")
+	public void list(Model model) {
+		List<NoticeDto> list = noticeDao.getList();
+		model.addAttribute("list",list);
+	}
 	
+	
+	
+	@RequestMapping("/writeForm")
+	public void writeForm() {
+		
+	}
 	
 }
