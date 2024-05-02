@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,19 +54,26 @@ public class MyController {
 		}
 		
 	}
-	
+	//writeForm
 	@RequestMapping("/writeForm")
 	public void writeForm() {
 		
 	}
-	
+	//write
 	@RequestMapping("/write")
 	public String write(@RequestParam("title") String title, @RequestParam("content") String content) {
+		
 		int mno = 1;
 		Date regidate = new Date();
 		noticeDao.writeDao(title, content, regidate, mno);
 		
 		return "main";
+	}
+	//detail
+	@RequestMapping("/detail")
+	public String getDetailList(@RequestParam("mno") int mno, Model model) {
+		model.addAttribute("dto", noticeDao.getDetailList(mno));
+		return "detail";
 	}
 	
 }
