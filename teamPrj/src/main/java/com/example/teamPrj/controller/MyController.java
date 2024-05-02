@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.teamPrj.dao.IMemberDao;
 import com.example.teamPrj.dto.MemberDto;
+import com.example.teamPrj.dto.NoticeDto;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -40,6 +42,7 @@ public class MyController {
 		String memberId = member.get(0).getId();
 		String memberPw = member.get(0).getPw();
 		if(memberId.equals(id) && memberPw.equals(pw)) {
+			session.setAttribute("member",member);
 			session.setAttribute("id",id);
 			session.setAttribute("name",member.get(0).getName());
 			return "main";
@@ -48,6 +51,19 @@ public class MyController {
 			return "login";
 		}
 		
+	}
+	
+	
+	@RequestMapping("/myPage")
+	public void myPage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		List<MemberDto> member = (List<MemberDto>)session.getAttribute("member");
+		//멤버 정보 불러오기
+		model.addAttribute("member",member);
+		
+		//작성 글 불러오기
+		List<NoticeDto> myList = memberDao.getMyList(member.get(0).getMno());
+		model.addAttribute("myList",myList);
 	}
 	
 	

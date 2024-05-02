@@ -7,23 +7,38 @@
 <body>
 <h1>Main Page</h1>
 <hr>
-<table>
-	<tr>
-        <th>회원번호</th>
-        <th>ID</th>
-        <th>비밀번호</th>
-        <th>이름</th>
-        <th>이메일</th>
-        <th>전화번호</th>
-    </tr>
-    <tr>
-        <td th:text="${dto.mno}"></td>
-        <td th:text="${dto.id}"></td>
-        <td th:text="${dto.pw}"></td>
-        <td th:text="${dto.name}"></td>
-        <td th:text="${dto.email}"></td>
-        <td th:text="${dto.tel}"></td>
-    </tr>
-</table>
+	<h3>회원정보</h3>
+	<table border="1">
+		<tr>
+	        <th>회원번호</th>
+	        <th>ID</th>
+	        <th>이름</th>
+	        <th>이메일</th>
+	        <th>전화번호</th>
+	    </tr>
+	    <tr th:each="member, status : ${member}">
+	       <td th:text="'회원번호' + ${member.mno}"></td>
+	       <td>[[${member.id}]]</td>
+	       <td>[[${member.name}]]</td>
+	       <td>[[${member.email}]]</td>
+	       <td>[[${member.tel}]]</td>
+	    </tr>
+	</table>
+
+	<h3>작성글목록</h3>
+	<table border="1" width="500" cellpadding="0" cellspacing="0" style="text-align: center;">
+		<thead>
+			<tr>
+				<th>순번</th><th>제목</th><th>작성일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="list, status : ${myList}">
+				<td>[[${list.num}]]</td>
+				<td><a th:href="@{detail(num=${list.num})}">[[${list.title}]]</a></td>
+				<td>[[${list.regdate}]]</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
