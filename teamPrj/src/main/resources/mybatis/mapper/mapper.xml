@@ -11,3 +11,6 @@
 		SELECT * FROM notice_dbl WHERE mno = #{mno}
 	</select>
 </mapper>
+
+
+
