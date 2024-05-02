@@ -2,8 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="com.example.teamPrj.dao.INoticeDao">
-<insert id="write">
-	INSERT INTO notice_DBL VALUES(null, #{Param1}, #{Param2}, #{Param3}, #{Param4}) 
-</insert>
+  
+<mapper namespace="com.example.teamPrj.dao.IMemberDao">
+	<select id="loginDao">
+		select * from member_dbl where id= #{param1}
+	</select>
 </mapper>

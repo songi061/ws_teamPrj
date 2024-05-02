@@ -14,4 +14,10 @@ public class MemberDto {
 	private String name;
 	private String email;
 	private String tel;
+	
+	
+	public MemberDto(String id, String pw){
+		this.id = id;
+		this.pw = pw;
+	}
 }
