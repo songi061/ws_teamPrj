@@ -40,7 +40,7 @@ public class MyController {
 	@RequestMapping("/write")
 	public String write(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("regidate") Date regidate ) {
 		String id2 = "aaa";
-		noticeDao.write(title, content, regidate, id2);
+		noticeDao.writeDao(title, content, regidate, id2);
 		
 		return "redirect:detail";
 	}

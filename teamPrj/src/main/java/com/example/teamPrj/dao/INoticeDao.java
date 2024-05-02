@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface INoticeDao {
 	//게시글 목록 불러오기, 게시글 상세목록 불러오기, 게시글 쓰기
-	public String write(@Param("title")String title,
+	public String writeDao(@Param("title")String title,
 	@Param("content")String content,
 	@Param("regidate")Date regidate,
 	@Param("id")String id);
