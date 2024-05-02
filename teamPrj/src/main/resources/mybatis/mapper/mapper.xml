@@ -7,5 +7,10 @@
 	<select id="loginDao">
 		select * from member_dbl where id= #{param1}
 	</select>
+	<select id="getMyList">
+		SELECT * FROM notice_dbl WHERE mno = #{mno}
+	</select>
 </mapper>
+
+
 

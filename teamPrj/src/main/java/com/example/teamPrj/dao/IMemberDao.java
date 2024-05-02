@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.teamPrj.dto.MemberDto;
+import com.example.teamPrj.dto.NoticeDto;
 
 @Mapper
 public interface IMemberDao {
@@ -12,4 +13,5 @@ public interface IMemberDao {
 	
 	public List<MemberDto> loginDao(String id);
 	
+	public List<NoticeDto> getMyList(int mno);
 }
