@@ -5,10 +5,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Main Page</h1>
+<h1>마이 페이지</h1>
 <hr>
-<table>
+<table border="1" width="500" cellpadding="0" cellspacing="0" style=text-align: center;>
 	<tr>
+        <h2 style="margin-left: 10%;">회원 정보</h2>
         <th>회원번호</th>
         <th>ID</th>
         <th>비밀번호</th>
@@ -23,6 +24,17 @@
         <td>[[${dto.name}]]</td>
         <td>[[${dto.email}]]</td>
         <td>[[${dto.tel}]]</td>
+    </tr>
+</table>
+<table border="1" width="500" cellpadding="0" cellspacing="0" style=text-align: center;>
+    <tr>
+        <h2 style="margin-left: 10%;">내가 쓴글</h2>
+        <th>번호</th>
+        <th>제목</th>
+    </tr>
+    <tr th:each>
+        <td>[[${dto.num}]]</td>
+        <td>[[${dto.title}]]</td>
     </tr>
 </table>
 </body>
