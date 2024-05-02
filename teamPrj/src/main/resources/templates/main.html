@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -8,5 +8,7 @@
 <h1>Main Page</h1>
 <hr>
 <a href="myPage?mno=${dto.mno }">마이페이지</a> <a href="writeForm">게시글쓰기</a> <a href="noticeList">게시판가기</a>
+
+<h3 th:text="${session.name + ' 님 반갑습니다.'}"></h3> 
 </body>
 </html>
