@@ -11,9 +11,10 @@
 	    SELECT * FROM notice_DBL WHERE num= #{num}
 	</select>
 	<select id="getList">
-	    SELECT * FROM notice_dbl WHERE id ISNULL
+	    SELECT * FROM notice_dbl WHERE id=""
 	</select>
 	<select id="getSecretList">
 		SELECT * FROM notice_dbl where id= #{id} 
 	</select>
 </mapper>
+

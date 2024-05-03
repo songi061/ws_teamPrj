@@ -32,6 +32,17 @@ public class MyController {
 	
 	@RequestMapping("/")
 	public String root() {
+		return "index";
+	}
+	
+	@RequestMapping("/registForm")
+	public void registForm() {
+		
+	}
+	
+	@RequestMapping("/regist")
+	public String regist(@RequestParam("id") String id,@RequestParam("pw") String pw,@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("tel") String tel ) {
+		memberDao.regist(id, pw, name, email, tel);
 		return "login";
 	}
 	
@@ -39,6 +50,7 @@ public class MyController {
 	public void login() {
 		log.info("로그인 페이지 가기.....");
 	}
+	
 	
 	@RequestMapping("/loginDo")
 	public String loginDo(HttpServletRequest request, @RequestParam("id") String id, @RequestParam("pw") String pw) {
@@ -119,7 +131,7 @@ public class MyController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "login";
+		return "index";
 	}
 	
 
