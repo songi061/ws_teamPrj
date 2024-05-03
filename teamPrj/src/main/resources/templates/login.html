@@ -12,5 +12,24 @@
 		PW : <input type="password" name="pw"><br>
 		<input type="submit" value="로그인">
 	</form> 
+	
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 폼이 제출될 때 실행되는 함수
+        document.querySelector("form").addEventListener("submit", function(event) {
+            // id 입력 필드의 값을 가져옴
+            var idValue = document.querySelector("input[name='id']").value;
+            var pwValue = document.querySelector("input[name='pw']").value;
+            // 만약 id 입력 필드가 비어있다면 null로 변환
+            if (idValue.trim() === "" || pwValue.trim() === "") {
+                alert("아이디 또는 패스워드를 입력하세요");
+             // 폼 제출을 중단
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+	
+	
 </body>
 </html>
