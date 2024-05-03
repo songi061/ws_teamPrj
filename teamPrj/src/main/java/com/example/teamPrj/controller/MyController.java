@@ -105,6 +105,7 @@ public class MyController {
 		model.addAttribute("dto", noticeDao.getDetailList(num_));
 		return "detail";
 	}
-
+	
+	
 	
 }
