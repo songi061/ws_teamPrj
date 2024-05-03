@@ -114,6 +114,14 @@ public class MyController {
 		model.addAttribute("dto", noticeDao.getDetailList(num_));
 		return "detail";
 	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "login";
+	}
+	
 
 	
 }
