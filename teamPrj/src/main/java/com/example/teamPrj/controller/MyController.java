@@ -72,6 +72,11 @@ public class MyController {
 		//작성 글 불러오기
 		List<NoticeDto> myList = memberDao.getMyList(member.get(0).getMno());
 		model.addAttribute("myList",myList);
+		
+		//비밀 글 불러오기
+		String id = (String)session.getAttribute("id");
+		List<NoticeDto> secretList = noticeDao.getSecretList(id);
+		model.addAttribute("secretList",secretList);
 	}
 	
 	

@@ -16,4 +16,5 @@ public class NoticeDto {
 	String content;
 	LocalDate regidate;
 	int mno;
+	String id;
 }
