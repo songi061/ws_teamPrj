@@ -1,5 +1,6 @@
 package com.example.teamPrj.controller;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class MyController {
 	private INoticeDao noticeDao;
 	
 	@RequestMapping("/")
-	public @ResponseBody String root() {
-		return "hello";
+	public String root() {
+		return "login";
 	}
 	
 	@RequestMapping("/login")
@@ -93,7 +94,9 @@ public class MyController {
 	public String write(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
 		
 		int mno = (int) session.getAttribute("mno");
-		Date regidate = new Date();
+		//Date regidate = new Date();
+		LocalDate regidate = LocalDate.now();
+
 		noticeDao.writeDao(title, content, regidate, mno);
 		
 		return "redirect:noticeList";
