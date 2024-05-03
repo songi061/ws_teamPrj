@@ -96,16 +96,17 @@ public class MyController {
 
 	//write
 	@RequestMapping("/write")
-	public String write(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
+	public String write(@RequestParam("id") String id, @RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
 		
 		int mno = (int) session.getAttribute("mno");
 		//Date regidate = new Date();
 		LocalDate regidate = LocalDate.now();
-
-		noticeDao.writeDao(title, content, regidate, mno);
+		
+		noticeDao.writeDao(title, content, regidate, mno, id);
 		
 		return "redirect:noticeList";
 	}
+	
 	//detail
 	@RequestMapping("/detail")
 	public String getDetailList(@RequestParam("num") String num, Model model) {

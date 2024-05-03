@@ -50,8 +50,8 @@
 		</thead>
 		<tbody>
 			<tr th:each="list, status : ${secretList}">
-				<td>[[${list.mno}]]</td>
-				<td><a th:href="@{detail(mno=${list.mno})}">[[${list.title}]]</a></td>
+				<td>[[${list.num}]]</td>
+				<td><a th:href="@{detail(num=${list.num})}">[[${list.title}]]</a></td>
 				<td>[[${list.regidate}]]</td>
 			</tr>
 		</tbody>
