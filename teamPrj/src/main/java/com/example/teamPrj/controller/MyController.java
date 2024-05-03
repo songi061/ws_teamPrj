@@ -1,5 +1,6 @@
 package com.example.teamPrj.controller;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class MyController {
 	private INoticeDao noticeDao;
 	
 	@RequestMapping("/")
-	public @ResponseBody String root() {
-		return "hello";
+	public String root() {
+		return "login";
 	}
 	
 	@RequestMapping("/login")
@@ -71,6 +72,11 @@ public class MyController {
 		//작성 글 불러오기
 		List<NoticeDto> myList = memberDao.getMyList(member.get(0).getMno());
 		model.addAttribute("myList",myList);
+		
+		//비밀 글 불러오기
+		String id = (String)session.getAttribute("id");
+		List<NoticeDto> secretList = noticeDao.getSecretList(id);
+		model.addAttribute("secretList",secretList);
 	}
 	
 	
@@ -93,7 +99,9 @@ public class MyController {
 	public String write(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession session) {
 		
 		int mno = (int) session.getAttribute("mno");
-		Date regidate = new Date();
+		//Date regidate = new Date();
+		LocalDate regidate = LocalDate.now();
+
 		noticeDao.writeDao(title, content, regidate, mno);
 		
 		return "redirect:noticeList";

@@ -1,5 +1,6 @@
 package com.example.teamPrj.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ public class NoticeDto {
 	int num;
 	String title;
 	String content;
-	Date regidate;
+	LocalDate regidate;
 	int mno;
+	String id;
 }
