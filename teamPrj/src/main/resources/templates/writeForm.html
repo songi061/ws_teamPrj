@@ -5,7 +5,14 @@
 <title>Insert title here</title>
 </head>
 <style>
-
+header {
+    text-align: center;
+    margin-top: 50px;
+}
+.menu {
+    text-align: center;
+    margin-bottom: 20px;
+}
 input {
        width: 100%;
        padding: 10px;
@@ -36,10 +43,12 @@ form {
 </style>
 <body>
 <header>
-	<h1>게시글 작성 페이지</h1>
-	<a href="myPage">마이페이지</a> <a href="writeForm">게시글쓰기</a> <a href="noticeList">게시판가기</a>
+	<h1>게시글 상세 페이지</h1>
 	<hr>
 </header>
+<div class="menu">
+	<a href="myPage">마이페이지</a> <a href="writeForm">게시글쓰기</a> <a href="noticeList">게시판가기</a>
+</div>
 <form action="write" method="post">
 	받는 ID <input type="text" name="id" placeholder="지정할 사람의 아이디를 입력하세요.없으면 비워주세요."><br>
     제목 <input type="text" name="title" placeholder="제목을 입력하세요...."><br>
