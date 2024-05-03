@@ -3,25 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-    input[type="submit"]{
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
-    input[type="submit"]:hover{
-        background-color: #0056b3;
-    }
-</style>
 </head>
+
+<style>
+header {
+    text-align: center;
+    margin-top: 50px;
+}
+#login-form{
+	display : flex;
+	flex-direction : column;
+	align-items : center;
+    width:400px;
+    margin:100px auto;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* inline이였던 요소들을 block으로 바꿈 */
+
+#login-form input, #login-form label{
+   display:block;
+}
+
+#login-form label{
+   margin-top: 10px;
+}
+
+#login-form input{
+    margin-top: 5px;
+	height : 30px;
+	width : 200px;
+}
+</style>
+
 <body>
-	<h1>로그인 페이지</h1>
-	<hr>
-	<form action="loginDo" method="get">
-		<input type="text" name="id" placeholder="id"><br>
-		<input type="password" name="pw" placeholder="pw"><br>
-		<input type="submit" value="로그인">
+	<header>
+		<h1>로그인 페이지</h1>
+		<hr>
+	</header>
+	
+	<form action="loginDo" method="get" id="login-form" >
+		<label class="legend">ID</label>
+		<input type="text" name="id"><br>
+		<label class="legend">PW</label> 
+		<input type="password" name="pw"><br>
+		<div class="btn">
+			<input type="submit" value="로그인">
+		</div>
 	</form> 
+	
+	
+	
+	
+	<script>
+	    document.addEventListener("DOMContentLoaded", function() {
+	        // 폼이 제출될 때 실행되는 함수
+	        document.querySelector("form").addEventListener("submit", function(event) {
+	            // id 입력 필드의 값을 가져옴
+	            var idValue = document.querySelector("input[name='id']").value;
+	            var pwValue = document.querySelector("input[name='pw']").value;
+	            // 만약 id 입력 필드가 비어있다면 null로 변환
+	            if (idValue.trim() === "" || pwValue.trim() === "") {
+	                alert("아이디 또는 패스워드를 입력하세요");
+	             // 폼 제출을 중단
+	                event.preventDefault();
+	            }
+	        });
+	    });
+	</script>
+	
+	
 </body>
 </html>
