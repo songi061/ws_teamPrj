@@ -13,5 +13,23 @@
     <textarea name="content" placeholder="내용을 입력하세요...." rows="8"required></textarea><br>
     <input type="submit" value="등록하기">
 </form>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 폼이 제출될 때 실행되는 함수
+        document.querySelector("form").addEventListener("submit", function(event) {
+            // id 입력 필드의 값을 가져옴
+            var idValue = document.querySelector("input[name='id']").value;
+            // 만약 id 입력 필드가 비어있다면 null로 변환
+            if (idValue.trim() === "") {
+                document.querySelector("input[name='id']").value = null;
+            }
+        });
+    });
+</script>
+
+
+
 </body>
 </html>
